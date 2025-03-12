@@ -1,32 +1,7 @@
-try:
-
-    initial_score = int(input("Эхлэлийн оноог оруулна уу: "))
-    
-    if initial_score < 0:
-        print("Оноо тэгээс бага байж болохгүй!")
-    else:
-        if initial_score <= 100:
-            bonus = 5
-        elif initial_score <= 1000:
-            bonus = initial_score * 0.20 
-        else:
-            bonus = initial_score * 0.10  
-        extra_bonus = 0
-
-        if initial_score % 2 == 0:
-            extra_bonus += 1
-
-        if str(initial_score)[-1] == '5':
-            extra_bonus += 2
-
-        total_bonus = bonus + extra_bonus
-        total_score = initial_score + total_bonus
-
-        print(f"\nЭхлэлийн оноо: {initial_score}")
-        print(f"Үндсэн урамшууллын оноо: {bonus}")
-        print(f"Нэмэлт урамшууллын оноо: {extra_bonus}")
-        print(f"Нийт урамшууллын оноо: {total_bonus}")
-        print(f"Нийт оноо: {total_score}")
-
-except ValueError:
-    print("Зөвхөн бүхэл тоо оруулна уу!")
+n = float(input(""))
+if n < 0: print("Сөрөг тоо оруулж болохгүй!"); exit()
+b = 5 if n <= 100 else n * 0.2 if n <= 1000 else n * 0.1
+b += 1 if n % 2 == 0 else 0
+b += 2 if str(n).split('.')[0][-1] == '5' else 0
+print(b)
+print(n + b)
