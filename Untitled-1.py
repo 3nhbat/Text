@@ -1,26 +1,32 @@
-def calculate_bonus_points(points):
-    # Үндсэн урамшууллын оноо тооцоолох
-    if points <= 100:
-        bonus = 5
-    elif points <= 1000:
-        bonus = points * 0.2
+try:
+
+    initial_score = int(input("Эхлэлийн оноог оруулна уу: "))
+    
+    if initial_score < 0:
+        print("Оноо тэгээс бага байж болохгүй!")
     else:
-        bonus = points * 0.1
-    
-    extra_bonus = 0
-    if points % 2 == 0:
-        extra_bonus += 1
-    if points % 10 == 5:
-        extra_bonus += 2
-    
-    total_bonus = bonus + extra_bonus
-    total_points = points + total_bonus
-    
-    return int(bonus), int(total_bonus), int(total_points)
+        if initial_score <= 100:
+            bonus = 5
+        elif initial_score <= 1000:
+            bonus = initial_score * 0.20 
+        else:
+            bonus = initial_score * 0.10  
+        extra_bonus = 0
 
-points = int(input("Оноог оруулна уу: "))
-bonus, total_bonus, total_points = calculate_bonus_points(points)
+        if initial_score % 2 == 0:
+            extra_bonus += 1
 
-print(f"Урамшууллын оноо: {bonus}")
-print(f"Нэмэлт урамшуулал: {total_bonus - bonus}")
-print(f"Нийт оноо: {total_points}")
+        if str(initial_score)[-1] == '5':
+            extra_bonus += 2
+
+        total_bonus = bonus + extra_bonus
+        total_score = initial_score + total_bonus
+
+        print(f"\nЭхлэлийн оноо: {initial_score}")
+        print(f"Үндсэн урамшууллын оноо: {bonus}")
+        print(f"Нэмэлт урамшууллын оноо: {extra_bonus}")
+        print(f"Нийт урамшууллын оноо: {total_bonus}")
+        print(f"Нийт оноо: {total_score}")
+
+except ValueError:
+    print("Зөвхөн бүхэл тоо оруулна уу!")
