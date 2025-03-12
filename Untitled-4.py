@@ -1,24 +1,37 @@
 import math
-
-def calculate_area(shape):
+shape = input("Дүрсийн төрлийг оруулна уу (квадрат, тэгш өнцөгт, тойрог, гурвалжин): ").lower()
+try:
     if shape == "квадрат":
-        side = float(input("Квадратын талын урт: "))
-        return round(side ** 2, 3)
+        side = float(input("Талын урт: "))
+        if side < 0:
+            print("Талын урт тэгээс бага байж болохгүй!")
+        else:
+            area = side * side
+            print(f"Квадратын талбай: {area:.3f}")
     elif shape == "тэгш өнцөгт":
-        length = float(input("Тэгш өнцөгтийн урт: "))
-        width = float(input("Тэгш өнцөгтийн өргөн: "))
-        return round(length * width, 3)
+        length = float(input("Урт: "))
+        width = float(input("Өргөн: "))
+        if length < 0 or width < 0:
+            print("Урт болон өргөн тэгээс бага байж болохгүй!")
+        else:
+            area = length * width
+            print(f"Тэгш өнцөгтийн талбай: {area:.3f}")
     elif shape == "тойрог":
-        radius = float(input("Тойргийн радиус: "))
-        return round(math.pi * radius ** 2, 3)
+        radius = float(input("Радиус: "))
+        if radius < 0:
+            print("Радиус тэгээс бага байж болохгүй!")
+        else:
+            area = math.pi * radius * radius
+            print(f"Тойргийн талбай: {area:.3f}")
     elif shape == "гурвалжин":
-        base = float(input("Гурвалжны суурийн урт: "))
-        height = float(input("Гурвалжны өндөр: "))
-        return round(0.5 * base * height, 3)
+        base = float(input("Хажуугийн урт: "))
+        height = float(input("Өндөр: "))
+        if base < 0 or height < 0:
+            print("Хажуугийн урт болон өндөр тэгээс бага байж болохгүй!")
+        else:
+            area = (base * height) / 2
+            print(f"Гурвалжны талбай: {area:.3f}")
     else:
-        return "Буруу оролт. Зөвхөн квадрат, тэгш өнцөгт, тойрог, гурвалжин сонгоно уу."
-
-# Хэрэглэгчээс оролт авах хэсэг
-shape = input("Геометрийн дүрсийг оруулна уу (квадрат, тэгш өнцөгт, тойрог, гурвалжин): ").strip().lower()
-area = calculate_area(shape)
-print(f"{shape.capitalize()}-н талбай: {area}")
+        print("Зөв дүрсийн төрлийг оруулна уу: квадрат, тэгш өнцөгт, тойрог, гурвалжин")
+except ValueError:
+    print("Зөвхөн тоо оруулна уу!")
